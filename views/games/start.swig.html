@@ -1,0 +1,16 @@
+{% extends '../layout.swig.html' %}
+
+
+
+{% block title %}
+    Juego
+{% endblock %}
+{% block content %}
+    <form action="/games/{{ data.gameid }}/join" method="post">
+        <input type="text" placeholder="Twitter Handle" name="nick"/>
+        <input type="submit" value="Dance!" style="height:52px;margin-left:30px" class="action"/>
+    </form>
+{% endblock %}
+
+
+

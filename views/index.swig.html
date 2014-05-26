@@ -1,5 +1,8 @@
 {% extends 'layout.swig.html' %}
 
 {% block title %}
-    {{ titulo|last }}
+    {{ titulo|first }}
 {% endblock %}
+{% block content %}
+ aca ira el juego <a href="/games/new">IR</a>
+{% endblock content %}

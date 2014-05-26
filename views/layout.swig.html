@@ -4,29 +4,25 @@
     <meta charset="utf-8" />
     <title>{% block title %}{% endblock %} - Example</title>
     <link href="/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <script src="/javascripts/jquery-1.11.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
+    {% block header %}{% endblock %}
 </head>
 <body>
 
 <header>
 
     <h1>{% block title %}{% endblock %}</h1>
-    {% block header %}{% endblock %}
-    <nav>
-        <ul>
-            <li><a href="/">Home Page</a></li>
-            <li><a href="/people">People</a></li>
-        </ul>
-    </nav>
+
+
 </header>
 
 <section role="main">
     {% block content %}{% endblock %}
 </section>
-<ul>
-    {% for tit in titulo %}
-        <li>{{ tit }}</li>
-    {% endfor %}
-</ul>
+
+
+
 </body>
 </html>
