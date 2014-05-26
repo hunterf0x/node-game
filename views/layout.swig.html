@@ -23,6 +23,10 @@
 <section role="main">
     {% block content %}{% endblock %}
 </section>
-
+<ul>
+    {% for tit in titulo %}
+        <li>{{ tit }}</li>
+    {% endfor %}
+</ul>
 </body>
 </html>

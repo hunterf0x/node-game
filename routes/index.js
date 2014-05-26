@@ -3,10 +3,13 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  var titulos = 'este es mi titulo';
+    var site_title = ["titulo 1", "titulo 2", "titulo 3"];
+    res.render('index', {titulo:site_title} );
+});
 
-  res.render('index', {titulo:titulos} );
-
+/* GET Hello World page. */
+router.get('/helloworld', function(req, res) {
+    res.render('helloworld', { title: 'Hello, World!' })
 });
 
 module.exports = router;
