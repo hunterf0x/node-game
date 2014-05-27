@@ -1,17 +1,15 @@
 var express = require('express');
 var router = express.Router();
-
 var redis = require('redis');
 var db =  redis.createClient();
+
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
     var site_title = ["este es mi home del juego", "titulo 2", "titulo 3"];
     res.render('index', {titulo:site_title} );
 });
-
-
-
 
 router.get('/new', function (req, res) {
     var data = { HOST: 'http://localhost', PORT: '3000',
