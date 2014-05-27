@@ -35,7 +35,7 @@
 
                 data = jQuery.parseJSON(message.data);
                 console.log(message.channel + " : " + data.nick + ' @ ' + data.ts);
-                console.log(message.channel.match(/games\.{{ data.gameid }}\.action\.(.*)$/));
+
                 if (action = message.channel.match(/games\.{{ data.gameid }}\.action\.(.*)$/) ) {
                     console.log('registra la accion');
                     // "games.xyz.action.left"
