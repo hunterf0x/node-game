@@ -8,12 +8,12 @@
 {% block content %}
     <script>
         $(document).ready(function() {
-            var socket = io.connect("");
+            var socket = io.connect("{{ data.HOST }}");
             var content = $('#content');
 
             socket.on('connect', function() {
                 console.log('connected');
-                socket.emit('publish', 'game.{{ data.gameid }}.user',
+                socket.emit('publish', 'games.{{ data.gameid }}.user',
                         JSON.stringify({nick: "{{ data.nick }}", ts: Date.now() })
                 );
             });
@@ -34,7 +34,7 @@
             });
 
             $(".action").click(function() {
-                socket.emit('publish', 'game.{{ data.gameid }}.action.' + $(this).data('action'),
+                socket.emit('publish', 'games.{{ data.gameid }}.action.' + $(this).data('action'),
                         JSON.stringify({ nick: "{{ data.nick }}", ts: Date.now() })
                 );
                 return false;
@@ -48,7 +48,7 @@
                 }else if(e.keyCode == 39){ // right
                     $(".action[data-action='right']").trigger('click');
                 }else if(e.keyCode == 40){ // down
-                    $(".action[data-action='hi']").trigger('click');
+                    $(".action[data-action='down']").trigger('click');
                 }
             });
         });

@@ -9,6 +9,7 @@
     <script>
         function add_user(data) {
             // TODO: Should use some template here!
+
             if (!$("#" + data.nick).length)
                 $('#dancefloor').append("<div class='dancer'><div class='nickname'>" + data.nick + "</div><div class='user hi' id='" + data.nick + "'></div></div>");
         }
@@ -26,20 +27,22 @@
 
             socket.on('connect', function() {
                 console.log('connected');
-                socket.emit('psubscribe', 'game.{{ data.gameid }}.action.*');
-                socket.emit('psubscribe', 'game.{{ data.gameid }}.user');
+                socket.emit('psubscribe', 'games.{{ data.gameid }}.action.*');
+                socket.emit('psubscribe', 'games.{{ data.gameid }}.user');
             });
 
             socket.on('message', function(message) {
-                console.log(message);
+
                 data = jQuery.parseJSON(message.data);
                 console.log(message.channel + " : " + data.nick + ' @ ' + data.ts);
-
+                console.log(message.channel.match(/games\.{{ data.gameid }}\.action\.(.*)$/));
                 if (action = message.channel.match(/games\.{{ data.gameid }}\.action\.(.*)$/) ) {
-                    // "game.xyz.action.left"
+                    console.log('registra la accion');
+                    // "games.xyz.action.left"
                     process_action(action, data);
                 } else if (message.channel.match(/games\.{{ data.gameid }}\.user/) ) {
-                    // "game.xyz.user"
+                    console.log('agrega al usuario');
+                    // "games.xyz.user"
                     add_user(data);
                 }
             });

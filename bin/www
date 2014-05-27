@@ -25,7 +25,6 @@ io.sockets.on('connection', function(socket) {
     });
 
     subscribe.on("pmessage", function(pattern, channel, message) {
-        console.log('ahora'+message);
         socket.emit('message', { channel: channel, data: message });
     });
 });
