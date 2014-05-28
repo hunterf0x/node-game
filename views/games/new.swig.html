@@ -3,7 +3,7 @@
 
 
 {% block title %}
-    Juego
+    {{ titulo }}
 {% endblock %}
 {% block content %}
     <script>
@@ -52,7 +52,7 @@
             });
         });
     </script>
-    <h2>{{ data.HOST }}/games/{{ data.gameid }}/start</h2>
+    <h2 style="color: #ffffff; ">{{ data.HOST }}:{{ data.PORT }}/games/{{ data.gameid }}/start</h2>
     <div id="dancefloor"></div>
 
 {% endblock %}

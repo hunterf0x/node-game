@@ -3,11 +3,12 @@ var router = express.Router();
 var redis = require('redis');
 var db =  redis.createClient();
 
+var site_title = 'Juego websockets';
 
 
 /* GET home page. */
 router.get('/', function(req, res) {
-    var site_title = ["este es mi home del juego", "titulo 2", "titulo 3"];
+
     res.render('index', {titulo:site_title} );
 });
 
@@ -18,7 +19,7 @@ router.get('/new', function (req, res) {
 
     // Create the game in DB
     db.sadd('games', data['gameid']);
-    res.render('games/new', {data :data});
+    res.render('games/new', {data :data, titulo:site_title});
 });
 
 router.get('/:gameid/start', function(req, res) {
