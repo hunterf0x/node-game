@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/new', function (req, res) {
-    var data = { HOST: 'http://localhost', PORT: '3000',
+    var data = { HOST: 'http://192.168.1.135', PORT: '3000',
         gameid: Math.random().toString(36).substring(12)
     }
 
@@ -39,7 +39,7 @@ router.post('/:gameid/join', function (req, res) {
         db.sismember(req.params.gameid, nick, function(err, data) {
             // Add the new member to the game
             db.sadd(req.params.gameid, nick);
-            params = { HOST: 'http://localhost', PORT: '3000',
+            params = { HOST: 'http://192.168.1.135', PORT: '3000',
                 gameid: req.params.gameid,
                 nick: nick,
                 ts: Date.now()
