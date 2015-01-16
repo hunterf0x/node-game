@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var redis = require('redis');
 var db =  redis.createClient();
-var host = '192.168.1.70';
+var host = 'IP HOST';
 
 
 var site_title = 'Juego websockets';
