@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var redis = require('redis');
 var db =  redis.createClient();
+var host = '192.168.1.70';
+
 
 var site_title = 'Juego websockets';
 
@@ -13,7 +15,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/new', function (req, res) {
-    var data = { HOST: 'http://192.168.1.135', PORT: '3000',
+    var data = { HOST: 'http://'+host, PORT: '3000',
         gameid: Math.random().toString(36).substring(12)
     }
 
@@ -39,7 +41,7 @@ router.post('/:gameid/join', function (req, res) {
         db.sismember(req.params.gameid, nick, function(err, data) {
             // Add the new member to the game
             db.sadd(req.params.gameid, nick);
-            params = { HOST: 'http://192.168.1.135', PORT: '3000',
+            params = { HOST: 'http://'+host, PORT: '3000',
                 gameid: req.params.gameid,
                 nick: nick,
                 ts: Date.now()
