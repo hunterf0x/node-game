@@ -35,7 +35,7 @@
         }
 
         $(document).ready(function() {
-            var socket = io.connect("{{ data.HOST }}");
+            var socket = io.connect("{{ data.HOST }}:{{ data.PORT }}");
             var dancefloor = $('#dancefloor');
 
             socket.on('connect', function() {
