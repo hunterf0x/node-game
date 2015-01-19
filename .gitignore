@@ -2,3 +2,4 @@
 .npmignore
 www
 games.js
+node_modules
