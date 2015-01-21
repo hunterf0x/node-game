@@ -55,7 +55,7 @@ router.post('/:gameid/join', function (req, res) {
                 nick: nick,
                 ts: Date.now()
             }
-            res.render('games/join', {data:params});
+            res.render('games/join', {data:params,titulo:site_title});
         });
     });
 });
