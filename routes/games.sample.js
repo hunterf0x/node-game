@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var redis = require('redis');
+var qrCode = require('qrcode-npm');
 var db =  redis.createClient();
 var host = 'IP HOST';
 
@@ -15,13 +16,21 @@ router.get('/', function(req, res) {
 });
 
 router.get('/new', function (req, res) {
+
+    var qr = qrCode.qrcode(4, 'M');
+
     var data = { HOST: 'http://'+host, PORT: '3000',
         gameid: Math.random().toString(36).substring(12)
     }
 
+    qr.addData(data.HOST+":"+data.PORT+"/games/"+data.gameid+"/start");
+    qr.make();
+
+    var imag = new String(qr.createImgTag(4));
+
     // Create the game in DB
     db.sadd('games', data['gameid']);
-    res.render('games/new', {data :data, titulo:site_title});
+    res.render('games/new', {data :data, titulo:site_title, marca:imag});
 });
 
 router.get('/:gameid/start', function(req, res) {
