@@ -6,7 +6,7 @@ var db =  redis.createClient();
 var host = 'IP HOST';
 
 
-var site_title = 'Juego websockets';
+var site_title = '{{Websockets Game}}';
 
 
 /* GET home page. */
@@ -35,7 +35,7 @@ router.get('/new', function (req, res) {
 
 router.get('/:gameid/start', function(req, res) {
     data = { gameid: req.params.gameid }
-    res.render('games/start', data);
+    res.render('games/start', {data:data,titulo:site_title});
 });
 
 router.post('/:gameid/join', function (req, res) {
