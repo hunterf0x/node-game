@@ -1,10 +1,18 @@
 {% extends '../layout.swig.html' %}
 
-
-
-{% block title %}
-    Juego
+{% block title %}{{ titulo }}{% endblock %}
+{% block header %}
+    {#JS#}
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    {#CSS#}
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
 {% endblock %}
+
+
+
+
 {% block content %}
     <script>
         $(document).ready(function() {
@@ -55,7 +63,7 @@
 
     </script>
     <h1 class="title">Dance , Dance!</h1>
-    <div style="padding-left: 18%">
+    <div>
         <div data-action="left" class="action">Clap Your Hands (&larr;)</div>
         <div data-action="right" class="action">Play the Guitar (&rarr;)</div>
         <div data-action="up" class="action">Jump! Jump! (&uarr;)</div>

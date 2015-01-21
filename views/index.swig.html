@@ -1,8 +1,15 @@
 {% extends 'layout.swig.html' %}
 
-{% block title %}
-    {{ titulo|first }}
+{% block title %}{{ titulo|first }}{% endblock %}
+{% block header %}
+    {#JS#}
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    {#CSS#}
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
 {% endblock %}
 {% block content %}
- aca ira el juego <a href="/games/new">IR</a>
+ <p class="lead">INTRODUCCION DEL JUEGO</p> <p class="lead">Puedes controlar al personaje utilizando las flechas del teclado o haciendo clicks sobre los botones de acción que apareceran. </p>
+    <h2> <a href="/games/new">JUGAR</a></h2>
 {% endblock content %}

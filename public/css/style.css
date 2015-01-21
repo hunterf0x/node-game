@@ -10,6 +10,16 @@ h1.title {
 
 #dancefloor {
 }
+.centro{
+    /*padding: 70px 25px;*/
+    text-align: center;
+    color: #ffffff;
+}
+.centro a{
+    color: #265a88;
+}
+
+
 
 form {
     display: block;
@@ -103,7 +113,7 @@ form input[type="text"] {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 20px;
     font-weight: normal;
-    height: 24px;
+    height: 75px;
     line-height: normal;
     margin-bottom: 3px;
     margin-left: 3px;
@@ -126,8 +136,8 @@ form input[type="text"] {
 .dancer {
     width: 180px;
     height: 320px;
-    float: left;
-    margin: 2px;
+    margin: 0 auto;
+
 }
 
 .nickname {

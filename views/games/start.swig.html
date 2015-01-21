@@ -1,14 +1,19 @@
 {% extends '../layout.swig.html' %}
 
-
-
-{% block title %}
-    Juego
+{% block title %}{{ titulo }}{% endblock %}
+{% block header %}
+    {#JS#}
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    {#CSS#}
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
 {% endblock %}
+
 {% block content %}
     <form action="/games/{{ data.gameid }}/join" method="post">
         <input type="text" placeholder="Ingresa nombre" name="nick"/>
-        <input type="submit" value="Dance!" style="height:52px;margin-left:30px" class="action"/>
+        <input type="submit" value="Dance!"  class="action"/>
     </form>
 {% endblock %}
 

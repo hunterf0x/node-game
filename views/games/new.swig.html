@@ -1,40 +1,17 @@
 {% extends '../layout.swig.html' %}
 
-
-
-{% block title %}
-    {{ titulo }}
-{% endblock %}
-{% block content %}
+{% block title %}{{ titulo }}{% endblock %}
+{% block header %}
+    {#JS#}
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/functions.js"></script>
+    {#CSS#}
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css">
     <script>
-        function add_user(data) {
-            // TODO: Should use some template here!
-
-            if (!$("#" + data.nick).length)
-                $('#dancefloor').append("<div class='dancer'><div class='nickname'>" + data.nick + "</div><div class='user hi' id='" + data.nick + "'></div></div>");
-        }
-
-        function process_action(action, data) {
-            nick = $("#dancefloor #" + data.nick);
-
-            // action is an array ['event string', 'group1'], so we need action[1]
-            nick.attr('class', 'user').addClass(action[1]);
-
-            if (action[1]=="left"){
-                var audio = new Audio('/hand-clap-2.wav');
-                audio.play();
-            }
-            if (action[1]=="right"){
-                var audio = new Audio('/guitar.wav');
-                audio.play();
-            }
-            if (action[1]=="hi"){
-                var audio = new Audio('/drum.mp3');
-                audio.play();
-            }
-        }
-
         $(document).ready(function() {
+
             var socket = io.connect("{{ data.HOST }}:{{ data.PORT }}");
             var dancefloor = $('#dancefloor');
 
@@ -65,7 +42,12 @@
             });
         });
     </script>
-    <h2 style="color: #ffffff; ">{{ data.HOST }}:{{ data.PORT }}/games/{{ data.gameid }}/start</h2>
+{% endblock %}
+
+{% block content %}
+
+    <div id="codigoqr">{{ marca.toString() }}</div>
+    <h2>{{ data.HOST }}:{{ data.PORT }}/games/{{ data.gameid }}/start</h2>
     <div id="dancefloor"></div>
 
 {% endblock %}
